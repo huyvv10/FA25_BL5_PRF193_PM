@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include "huyfunc.c"
-
 //void menu();
 //void inputArray(int a[], int n);
 //void display(int a[], int n);
@@ -8,8 +7,8 @@
 int main() {
 	int sel,n,kw,pos;
 	n=10;
-	int arr[]={5,6,7,4,2,6,4,9,3,8};
-//	printf("Input number of element: "); 
+	int arr[]= {5,6,7,4,2,6,4,9,3,8};
+//	printf("Input number of element: ");
 //	scanf("%d", &n);
 //	int arr[n];
 //	inputArray(arr,n);
@@ -21,26 +20,52 @@ int main() {
 			case 1:
 				display(arr,n);
 				break;
-			case 2:				
-				printf("Input a searching number: "); scanf("%d", &kw);
+			case 2:
+				printf("Input a searching number: ");
+				scanf("%d", &kw);
 				pos = findPosFromLeft(arr,n,kw);
 				if (pos!=-1)
 					printf("The position first found of %d is %d\n", kw, pos);
 				else
-					printf("Find not found %d in the array\n", kw);	
+					printf("Find not found %d in the array\n", kw);
 				break;
 			case 3:
-				printf("Input a searching number: "); scanf("%d", &kw);
+				printf("Input a searching number: ");
+				scanf("%d", &kw);
 				pos = findPosFromRight(arr,n,kw);
 				if (pos!=-1)
 					printf("The position first found of %d is %d\n", kw, pos);
 				else
-					printf("Find not found %d in the array\n", kw);	
+					printf("Find not found %d in the array\n", kw);
 				break;
 			case 4:
+				printf("4.Sort in Asc (selection sort)\n");
+				sortAscSelection(arr,n);
+				display(arr,n);
 				break;
 			case 5:
+				printf("5.Sort in Desc (selection sort)\n");
+				sortDescSelection(arr,n);
+				display(arr,n);
 				break;
+			case 6:
+				printf("6.Sort in Asc (bubble sort)\n");
+				sortAscBubbleSort(arr,n);
+				display(arr,n);
+				break;
+			case 7:
+				printf("7.Sort in Desc (bubble sort)\n");
+				sortDescBubbleSort(arr,n);
+				display(arr,n);
+				break;
+			case 8:
+				printf("Input search number: "); scanf("%d", &kw);
+				int rs = countTheAppearance(arr,n,kw);
+				if (rs!=0)
+					printf("The appearance numbers of %d in the array is: %d", kw, rs);
+				else
+					printf("Find not found %d in the array", kw);	
+				break;	
 			case 0:
 				printf("Bye bye.\n");
 				break;
