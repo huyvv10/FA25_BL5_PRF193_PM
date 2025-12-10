@@ -86,6 +86,9 @@ int main(){
 	printf("Input the-k minimum: "); scanf("%d", &k2);
 	pos1=findPosMaxTheK(arr,n,k1);			
 	pos2=findPosMinTheK(arr,n,k2);
+	if (pos1>pos2){
+		int tg=pos1; pos1=pos2; pos2=tg;
+	}
 	sortAscInRange(arr,n,pos1,pos2);
 	display(arr,n);			
 	return 0;
