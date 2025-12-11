@@ -46,8 +46,24 @@ void getMaxMinSumMainDiagonal(int a[][MAX], int r, int c){
 	printf("Main diagonal: %d %d %d", max, min, S);
 }
 
-void getMaxMinSumSubDiagonal(int a[][MAX], int r, int c){
-	
+void sumOfEachRow(int a[][MAX], int r, int c){
+	int i,j,S;
+	for (i=0; i<r; i++){
+		S=0;
+		for (j=0; j<c; j++)
+			S+=a[i][j];
+		printf("\nTotal of line %d: %d", i+1, S);	
+	}
+}
+
+void sumOfEachColumn(int a[][MAX], int r, int c){
+	int i,j,S;
+	for (j=0; j<c; j++){
+		S=0;
+		for (i=0; i<r; i++)
+			S+=a[i][j];
+		printf("\nTotal of column %d: %d", j+1, S);	
+	}	
 }
 int main(){
 	printf("===INPUT===\n");
@@ -64,5 +80,8 @@ int main(){
 	displaySubDiagonal(m,r,c);
 	printf("\n--- Get Main diagonal info---\n");
 	getMaxMinSumMainDiagonal(m,r,c);
+	printf("\n--- Total of each row---\n");
+	sumOfEachRow(m,r,c);
+	sumOfEachColumn(m,r,c);
 	return 0;
 }
