@@ -50,7 +50,25 @@ void searchTheExisting(char str[][MAX], int n, char kw[MAX]) {
 
 //Display the elements in the array which containing kw
 void searchAll(char str[][MAX], int n, char kw[MAX]) {
+	int i, count=0;
+	for (i=0; i<n; i++) 
+		if (strstr(str[i],kw)!=NULL) {
+			printf("%s\n", str[i]);
+			count++;
+		}
+	if (count==0) printf("Find not found %s in the array", kw);		
+	else printf("Number of found %s in the array is: %d", kw, count);
+}
 
+void editName(char str[][MAX], int n, char *searchingName, char *replaceName){
+	int i, count=0;
+	for (i=0; i<n; i++) 
+		if (strcmp(str[i],searchingName)==0) {	
+			strcpy(str[i],replaceName);
+			count++;
+			break;
+		}
+	if (count==0) printf("\nFind not found %s.", searchingName);	
 }
 void menu();
 int main() {
@@ -93,6 +111,20 @@ int main() {
 				fflush(stdin);			//Clear buffer
 				searchTheExisting(S,n,kw);
 				break;
+			case 5:
+				printf("\nInput searching kw: ");
+				scanf("%[^\n]", kw);
+				fflush(stdin);			//Clear buffer
+				searchAll(S,n,kw);
+				break;				
+			case 6:
+				printf("\nInput searching name: ");
+				scanf("%[^\n]", kw);
+				fflush(stdin);			//Clear buffer	
+				char rep[MAX];
+				printf("\nInput replace name: ");
+				scanf("%[^\n]", rep);
+				editName(S,n,kw,rep); break;							
 			case 0:
 				printf("Bye!\n");
 				break;
